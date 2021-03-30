@@ -21,5 +21,27 @@ namespace Galen_Framework
         {
             driver.Close();
         }
+
+        /// <summary>
+        /// Obtain Title of a Page.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public string ObtainTitle(By element)
+        {
+            string Title = driver.FindElement(element).Text;
+
+            return Title;
+        }
+
+        public void Click(By element)
+        {
+            driver.FindElement(element).Click();
+        }
+
+        public void EnterText(By element, string text)
+        {
+            driver.FindElement(element).SendKeys(text);
+        }
     }
 }

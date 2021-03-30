@@ -15,6 +15,10 @@ namespace Galen_Framework
         By NoteTitle = By.XPath("//input[@placeholder='Title']");
         By Descrition = By.XPath("//textarea[@placeholder='Description']");
 
+        //Titles
+        public By NotesTitle = By.XPath("//div[@id='my-notes-page']//h2");
+        public By AddNoteTitle = By.XPath("//div[@id='ad-note-page']//h2");
+
         public MyNotesPage OpenBrowser()
         {
             driver.Url = url;
@@ -24,15 +28,15 @@ namespace Galen_Framework
 
         public MyNotesPage ClickButton()
         {
-            driver.FindElement(AddNoteButton).Click();
+            Click(AddNoteButton);
 
             return this;
         }
 
         public MyNotesPage AddNote()
         {
-            driver.FindElement(NoteTitle).SendKeys("Note - Title");
-            driver.FindElement(Descrition).SendKeys("Note - Description");
+            EnterText(NoteTitle, "Note - Title");
+            EnterText(NoteTitle, "Note - Description");
 
             return this;
         }

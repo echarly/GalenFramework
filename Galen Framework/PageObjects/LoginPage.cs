@@ -17,6 +17,10 @@ namespace Galen_Framework
         By btnLoginPage = By.XPath("//button[@type='button']");
         By btnCancel = By.CssSelector(".button-cancel");
 
+        //Text
+        public By LoginTitle = By.XPath("//div[@class='dialog-panel']//h2");
+        public By welcomeTitle = By.XPath("//div[@class='jumbotron']//h1");
+
         public LoginPageObject OpenBrowser()
         {
             driver.Url = url;
@@ -26,17 +30,18 @@ namespace Galen_Framework
 
         public LoginPageObject ClickLogin()
         {
-            driver.FindElement(LoginButton).Click();
+            Click(LoginButton);
             return this;
         }
 
         public LoginPageObject LoginValidUser(string username, string password)
         {
-            driver.FindElement(txtUserName).SendKeys(username);
-            driver.FindElement(txtPassword).SendKeys(password);
-            driver.FindElement(btnLoginPage).Click();
+            EnterText(txtUserName, username);
+            EnterText(txtPassword, password);
+            Click(btnLoginPage);
 
             return this;
         }
+
     }
 }

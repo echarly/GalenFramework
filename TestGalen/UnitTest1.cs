@@ -20,16 +20,31 @@ namespace TestGalen
         public void TestMethod1()
         {
             //Login
-            LoginPageObject login = new LoginPageObject();            
+            LoginPageObject login = new LoginPageObject();
+            BasePage basePage = new BasePage();
+
             login
-                .OpenBrowser()
-                .ClickLogin()
+                .OpenBrowser();
+            Assert.AreEqual(basePage.ObtainTitle(login.welcomeTitle), "Welcome to our test page!");
+
+            login
+                .ClickLogin();
+
+            Assert.AreEqual(basePage.ObtainTitle(login.LoginTitle), "Login");
+
+            login
                 .LoginValidUser("testuser@example.com", "test123");
 
             //Notes
             MyNotesPage note = new MyNotesPage();
+
+            Assert.AreEqual(basePage.ObtainTitle(note.NotesTitle), "My Notes");
             note
-                .ClickButton()
+                .ClickButton();
+
+            Assert.AreEqual(basePage.ObtainTitle(note.AddNoteTitle), "Add note");
+
+            note
                 .AddNote()
                 .ClickButton();
         }
