@@ -19,12 +19,14 @@ namespace TestGalen
         [TestMethod]
         public void TestMethod1()
         {
+            //Login
             LoginPageObject login = new LoginPageObject();            
             login
                 .OpenBrowser()
                 .ClickLogin()
                 .LoginValidUser("testuser@example.com", "test123");
 
+            //Notes
             MyNotesPage note = new MyNotesPage();
             note
                 .ClickButton()
